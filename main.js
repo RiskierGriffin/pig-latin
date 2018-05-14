@@ -50,12 +50,15 @@ fs.readFile("eng.txt", "utf8", function (err, data){
             letterCheck();
         }
         makeNewSentence();
-        console.log(newSentence);
 
     }
 }); 
-fs.writeFile("pig.txt", newSentence, function(err) {
-    if(err) throw err;
-
-    console.log("Exported new sentence to pig.txt");
+fs.writeFile("pig.txt", "newSentence", function(err) {
+    if(err){
+        console.log("failed");
+    }
+    else{
+        console.log(newSentence);
+        console.log("Exported new sentence to pig.txt");
+    }
 });

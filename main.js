@@ -54,8 +54,3 @@ fs.readFile("eng.txt", "utf8", function (err, data){
 
     }
 }); 
-fs.writeFile("pig.txt", newSentence, function(err) {
-    if(err) throw err;
-
-    console.log("Exported new sentence to pig.txt");
-});

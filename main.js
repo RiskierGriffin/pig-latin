@@ -2,12 +2,14 @@
 var http = require("http");
 var fs = require("fs");
 vowels = ["a","e","i","o","u","y"];
+letters = "qwertyuiopasdfghjklzxcvbnm";
 pigEnding = "ay";
 removedLetters = "";
 newWord = "";
 newSentence = "";
 storeConsonants = [];
 newSentenceArray = [];
+punctuationArray = [];
 
 //checks each letter of the word and identifies if it is a vowel or a consonant
 function letterCheck(){
@@ -38,6 +40,7 @@ function translate(){
     newSentenceArray.push(newWord);
 }
 function makeNewSentence(){
+    newSentenceArray.splice(punctuationIndex,0,punctuationSymbol);
     newSentence = newSentenceArray.join("");
 } 
 //reads file
@@ -46,8 +49,16 @@ fs.readFile("eng.txt", "utf8", function (err, data){
     else{
         inputText = data.toString().split("\n");
         for(ii = 0; ii < inputText.length; ii++){
-            splitWord = inputText[ii].split("");
-            letterCheck();
+            if(letters.indexOf(inputText[ii][0]) > -1){
+                console.log("all good baws");
+                splitWord = inputText[ii].split("");
+                letterCheck();
+            }
+            else{
+                punctuationIndex = ii;
+                punctuationSymbol = inputText[ii];
+                continue;
+            }
         }
         makeNewSentence();
         newData = newSentence;

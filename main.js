@@ -42,15 +42,14 @@ function translate(){
 function makeNewSentence(){
     newSentenceArray.splice(punctuationIndex,0,punctuationSymbol);
     newSentence = newSentenceArray.join("");
-} 
+}
 //reads file
 fs.readFile("eng.txt", "utf8", function (err, data){
     if(err) throw err;
     else{
-        inputText = data.toString().split("\n");
+        inputText = data.toString().split(" ");
         for(ii = 0; ii < inputText.length; ii++){
             if(letters.indexOf(inputText[ii][0]) > -1){
-                console.log("all good baws");
                 splitWord = inputText[ii].split("");
                 letterCheck();
             }
@@ -65,4 +64,4 @@ fs.readFile("eng.txt", "utf8", function (err, data){
 
     }
     console.log(newSentence);
-}); 
+});

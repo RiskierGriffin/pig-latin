@@ -64,4 +64,5 @@ fs.readFile("eng.txt", "utf8", function (err, data){
 
     }
     console.log(newSentence);
-});
+
+}); 
